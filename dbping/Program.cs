@@ -97,7 +97,6 @@ namespace VareNo.dbping
         {
             try
             {
-                //Data Source=KBG1DBDEV01\SQL2012;Initial Catalog=Interfaces;Integrated Security=True
                 using (var conn = new SqlConnection($"Data Source={connection};Initial Catalog={catalog};Integrated Security=True"))
                 {
                     SqlCommand command = null;
