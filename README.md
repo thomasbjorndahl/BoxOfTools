@@ -6,3 +6,13 @@ A (soon to be) collection of usefull tools
 _Tool used to ping a database_
 - **ADMembers**
 _Tool for checking AD membership_
+
+
+## DBPING
+How to use "dbping.exe"
+
+ -c = The connection - example: -c "dbserver" or -c dbserver\instanvce
+ -p = Pause after execution
+ -r = Number of times to repeat on non connection
+ -d = Database. (Initial catalog)
+ -? = Show HELP page
