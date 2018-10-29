@@ -12,8 +12,9 @@ _Tool for checking AD membership_
 How to use "dbping.exe"
 
 Parameters:
--c = The connection - example: -c "dbserver" or -c dbserver\instanvce
--p = Pause after execution
--r = Number of times to repeat on non connection
--d = Database. (Initial catalog)
--? = Show HELP page
+
+- -c : The connection, example: -c "dbserver" or -c dbserver\instanvce
+- -p : Pause after execution
+- -r : Number of times to repeat on non connection
+- -d : Database. (Initial catalog)
+- -? : Show HELP page
