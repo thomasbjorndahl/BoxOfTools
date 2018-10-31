@@ -6,6 +6,8 @@ A (soon to be) collection of usefull tools
 _Tool used to ping a database_
 - **ADMembers**
 _Tool for checking AD membership_
+- **PingTester**
+_Tool for logging/testing network connections and routes_
 
 
 ## DBPING
