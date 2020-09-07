@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VareNo.common;
 
 namespace VareNo.dbping
 {
@@ -23,24 +24,10 @@ namespace VareNo.dbping
             }
             catch(Exception ex)
             {
-                WriteError(ex.Message);
+                Loggers.WriteError(ex.Message);
             }
         }
-        #region loggers
-        private static void WriteError(string message)
-        {
-            var cl = Console.ForegroundColor;
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Error occured: {message}");
-            Console.ForegroundColor = cl;
-        }
-
-        private static void WriteMessage(string message)
-        {           
-            Console.WriteLine($"{message}");
-           
-        }
-        #endregion
+        
 
         internal async Task RunApplicationAsync(string[] args)
         {            
@@ -48,7 +35,7 @@ namespace VareNo.dbping
             await PerformTasksAsync().ConfigureAwait(false);
             if (readAnyKey)
             {
-                WriteMessage("Press any key");
+                Loggers.WriteMessage("Press any key");
                 Console.ReadKey();
             }
         }
@@ -78,18 +65,18 @@ namespace VareNo.dbping
             var connectionOk = false;
             while(i < numbOfTries && !connectionOk)
             {
-                WriteMessage($"{i + 1}: Trying to connect to {catalog}@{connection}");
+                Loggers.WriteMessage($"{i + 1}: Trying to connect to {catalog}@{connection}");
                 connectionOk = await CheckConnectionAsync().ConfigureAwait(false);
                 await Task.Delay(1000 * secondsDelay);
                 i++;
             }
             if (connectionOk)
             {
-                WriteMessage("Connection OK...!");
+                Loggers.WriteMessage("Connection OK...!");
             }
             else
             {
-                WriteMessage($"Could not connect after {i} etempts");
+                Loggers.WriteMessage($"Could not connect after {i} etempts");
             }
         }
 
@@ -118,7 +105,7 @@ namespace VareNo.dbping
                     }
                     catch(Exception e)
                     {
-                        WriteError(e.Message);
+                        Loggers.WriteError(e.Message);
                         return false;
                     }
                     finally
@@ -130,7 +117,7 @@ namespace VareNo.dbping
             }
             catch(Exception ex)
             {
-                WriteError(ex.Message);
+                Loggers.WriteError(ex.Message);
                 return false;
             }
         }
@@ -140,7 +127,7 @@ namespace VareNo.dbping
             var valid = true;
             if (string.IsNullOrEmpty(connection))
             {
-                WriteError("Connection info was not found");
+                Loggers.WriteError("Connection info was not found");
                 valid = false;
             }
             return valid;
@@ -148,15 +135,15 @@ namespace VareNo.dbping
 
         private void WriteHelpScreen()
         {
-            WriteMessage("--------------------------------------");
-            WriteMessage($"How to use \"{System.AppDomain.CurrentDomain.FriendlyName}\"\n");
-            WriteMessage(" -c = The connection - example: -c \"dbserver\" or -c dbserver\\instanvce ");
-            WriteMessage(" -p = Pause after execution");
-            WriteMessage(" -r = Number of times to repeat on non connection");
-            WriteMessage(" -d = Database. (Initial catalog)");
-            WriteMessage(" -? = Show this page");
+            Loggers.WriteMessage("--------------------------------------");
+            Loggers.WriteMessage($"How to use \"{System.AppDomain.CurrentDomain.FriendlyName}\"\n");
+            Loggers.WriteMessage(" -c = The connection - example: -c \"dbserver\" or -c dbserver\\instanvce ");
+            Loggers.WriteMessage(" -p = Pause after execution");
+            Loggers.WriteMessage(" -r = Number of times to repeat on non connection");
+            Loggers.WriteMessage(" -d = Database. (Initial catalog)");
+            Loggers.WriteMessage(" -? = Show this page");
             
-            WriteMessage("--------------------------------------");
+            Loggers.WriteMessage("--------------------------------------");
         }
 
         private void ReadArguments(string[] args)

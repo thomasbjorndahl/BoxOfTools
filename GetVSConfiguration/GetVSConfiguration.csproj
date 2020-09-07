@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FBFABECC-1331-4977-A10C-9E5DDFFBFDE3}</ProjectGuid>
+    <ProjectGuid>{D527C1CA-E8A9-4021-8544-591D3DC8DE5A}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>dbping</RootNamespace>
-    <AssemblyName>dbping</AssemblyName>
+    <RootNamespace>GecVSConfiguration</RootNamespace>
+    <AssemblyName>GecVSConfiguration</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\dbping\Program.loggers.cs">
+      <Link>Program.loggers.cs</Link>
+    </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="Program.loggers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

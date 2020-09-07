@@ -8,7 +8,8 @@ _Tool used to ping a database_
 _Tool for checking AD membership_
 - **PingTester**
 _Tool for logging/testing network connections and routes_
-
+- **GetVSConfiguration**
+_Tool for simply get whether the active configuration is Debug/Release or something else_
 
 ## DBPING
 How to use "dbping.exe"
@@ -20,3 +21,8 @@ Parameters:
 - -r : Number of times to repeat on non connection
 - -d : Database. (Initial catalog)
 - -? : Show HELP page
+
+## GetVSConfiguration
+How to use "GetVSConfiguration.exe"
+
+First (and only) parameter to this program, is a link to a folder where a *.csproj.user file can be found
