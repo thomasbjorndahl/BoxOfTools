@@ -197,7 +197,8 @@ namespace PingTester
         private void LogOutput(PingItem pi)
         {
             LogBuffer lb = new LogBuffer();
-            PingLogItem pii = pi.PingLog.OrderByDescending(i => i.ID).First();
+            //                           This failed if the input was null (Thomas)
+            PingLogItem pii = pi.PingLog.Where(i => null != i).OrderByDescending(i => i.ID).First();
             if (pii.Failed)
             {
                 string ip = "";
