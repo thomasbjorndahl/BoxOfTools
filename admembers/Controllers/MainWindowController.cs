@@ -29,6 +29,7 @@ namespace ADMembers.Controllers
         private PrincipalContainer _selectedGroup;
         private PrincipalContainer _selectedUser;
         private bool _searching = false;
+        private Guid? _guid;
 
         public MainWindowController()
         {
@@ -45,6 +46,19 @@ namespace ADMembers.Controllers
                 }
             }
             catch { }
+        }
+
+        public Guid? ItemGuid
+        {
+            get
+            {
+                return _guid;
+            }
+            set
+            {
+                _guid = value;
+                RaisePropertyChanged("ItemGuid");
+            }
         }
 
         public string ADGroup
@@ -331,10 +345,12 @@ namespace ADMembers.Controllers
             var sw = Stopwatch.StartNew();
             PrincipalContext ctx = new PrincipalContext(ContextType.Domain);
             GroupPrincipal group = GroupPrincipal.FindByIdentity(ctx, _adGroup);
+
             var users = new List<PrincipalContainer>();
 
             if (group != null)
             {
+                ItemGuid = group.Guid;
                 try
                 {
                     foreach (var p in group.GetMembers())

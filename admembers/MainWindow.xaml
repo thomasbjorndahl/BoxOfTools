@@ -21,6 +21,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -38,6 +39,7 @@
                     <Label Content="AD Group name" Grid.Column="0"></Label>
                     <TextBox MinWidth="123" 
                              Grid.Column="1"
+                             Grid.ColumnSpan="2"
                              Text="{Binding ADGroup, UpdateSourceTrigger=PropertyChanged}">
                         <TextBox.InputBindings>
                             <KeyBinding Key="Enter" Command="{Binding Search}"/>
@@ -78,7 +80,8 @@
                         <DataGridTextColumn Binding="{Binding Description}" Header="Description" IsReadOnly="True"/>
                     </DataGrid.Columns>
                 </DataGrid>
-                <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="{Binding Status}"></Label>
+                <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding Status}"></Label>
+                <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding ItemGuid}"></Label>
             </Grid>
         </TabItem>
         <TabItem Header="AD User">
